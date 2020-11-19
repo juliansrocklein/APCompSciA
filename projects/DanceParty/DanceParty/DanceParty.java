@@ -19,7 +19,7 @@ import javax.swing.Timer;
 
 /**
  * AP CS A Project 1: Dance Party
- * Animates a [put your description here]
+ * Animates a bunch of moving shapes with sounds
  * @author hpluska
  * @author yourname
  */
@@ -70,41 +70,41 @@ public class DanceParty extends JPanel
 		 y += yDelta;
             
 	    //Creates a yellow rectangle that fills the screen 
-            g.setColor(Color.YELLOW);
+            g.setColor(Color.GRAY);
             g.fillRect(0,0, getWidth(), getHeight());
 
 	    //Creates a gray rectangle that moves across the screen
             //if the frameCount is greater than 50
        	    //if(frameCount > 50){
-            	g.setColor(Color.PINK);
-            	g.fillRect(x,y, 300, 200);
-            //}
+            	g.setColor(Color.BLUE);
+				g.fillOval(x,y, 50, 50);
+				if (x > 400){
+
+					xDelta = xDelta * -1;
+				}
+				
+			//}
+			
+
 	    
             //draws the name of the dancer
             g.setColor(Color.BLUE);
             g.setFont(new Font("Helvetica", Font.BOLD, 24));
-            g.drawString("My name is...", getWidth()/2-100, 50);
-            
+            g.drawString("My name is person and I just threw a boomerang", 20, 50);
+            g.drawString("Wow! The curve!", 400, 300);
             //draws a green oval in the middle of the screen
             //notice the perspective from which the oval is drawn when you run the program
-            g.setColor(Color.green);
-            g.fillOval(getWidth()/2, getHeight()/2, 200, 300);
+            g.setColor(Color.black);
+			g.fillOval(200, 70, 200, 200);
+			
+			g.fillRect(250, 90, 100, 400);
+			g.fillRect(275,300, 100, 50);
             
 
-            //draws a polygon
-	    //x1 is an array of x coordinates
-	    //y1 is an array of y coordinates
-            g.setColor(Color.black);
-            int x1[]={55, 55, 65+x};
-            int y1[]={105, 80, 90};
-            g.fillPolygon( x1, y1, 3);
+        
 
-            //creates a stroke of width 10
-            g.setStroke(new BasicStroke(10));
 
-            //draws a black line
-            g.setColor(Color.black);
-            g.drawLine(104,310,104,350);
+            
             
             // Makes the animation smoother
             Toolkit.getDefaultToolkit().sync();
@@ -122,7 +122,7 @@ public class DanceParty extends JPanel
 		this.setDoubleBuffered(true);
 		setBackground(Color.black);
 		//TODO: Initialize x and y to what ever you want
-                x = 0;
+                x = INIT_WIDTH/2;
                 y = INIT_HEIGHT/2;
 		startAnimation();
 	}
@@ -132,7 +132,7 @@ public class DanceParty extends JPanel
          */
         public static void playMusic(){
         //TODO: Change the path to the correct path on your computer
-        String fileName = "MakeSomeNoise.au";
+        String fileName = "MakeSomeNoise.au"; // already is the right path
         
 	/**
 	 * DO NOT MODIFY
